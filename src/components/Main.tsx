@@ -748,14 +748,7 @@ export default function Main() {
           {decimalsError && <SendDC />}
           {priceError && <SendDC />}
           <div className="flex gap-3"></div>
-          {isTxSuccess && (
-            <div className="flex flex-col items-center">
-              <p className="text-lime-500 text-center">
-                Transaction successful!
-              </p>
-              <Confetti />
-            </div>
-          )}
+          {isTxSuccess && <Confetti />}
           {error && <SendDC />}
           <footer className="flex-none fixed bottom-0 left-0 w-full p-4 text-center text-white">
            <div> Please use farcaster wallet on Mobile <br /> for better experience.</div>

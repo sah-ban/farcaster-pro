@@ -739,8 +739,8 @@ export default function Main() {
             /month
           </div>{" "}
           {userBalance < Number(totalPrice) && (
-            <p className="text-white text-center mt-3 font-semibold text-sm">
-              Your Balance: {userBalance.toFixed(2)} USDC
+            <p className="text-red-700 text-center mt-3 font-semibold text-sm">
+              Your Balance: {userBalance.toFixed(2)} USDC on Base - Insufficient
             </p>
           )}
           <div className="text-white text-center mb-5"></div>

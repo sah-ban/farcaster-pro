@@ -237,6 +237,18 @@ export default function Main() {
         setIsClicked(false);
         return;
       }
+      if (isTxSuccess) {
+        setIsClicked(false);
+        const text =
+          context?.user?.fid !== fid
+            ? `I Gifted Farcaster Pro to @${profile?.username} for 30 days, with this miniapp by @cashlessman.eth`
+            : "I Subscribed to Farcaster Pro for 30 days, with this miniapp by @cashlessman.eth";
+        sdk.actions.composeCast({
+          text,
+          embeds: [`${process.env.NEXT_PUBLIC_URL}`],
+        });
+        return;
+      }
       if (
         userBalance < Number(formatUnits(priceData + EXTRA_FEE, tokenDecimals))
       ) {
@@ -690,8 +702,8 @@ export default function Main() {
                       ? "Processing..."
                       : isTxSuccess
                       ? context?.user?.fid !== fid
-                        ? "Gifted!"
-                        : "Subscribed!"
+                        ? "Gifted!, Cast it!"
+                        : "Subscribed!, Cast it!"
                       : `${
                           context?.user?.fid !== fid ? "Gift" : "Subscribe"
                         } Pro for 30 days`}

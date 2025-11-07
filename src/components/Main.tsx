@@ -570,7 +570,7 @@ export default function Main() {
             <div className="flex items-center space-x-4">
               <div className="relative">
                 <img
-                  src={profile?.pfp?.url}
+                  src={profile?.pfp?.url ?? "https://farcaster.xyz/avatar.png"}
                   alt={profile?.displayName}
                   className="w-16 h-16 rounded-full border"
                 />

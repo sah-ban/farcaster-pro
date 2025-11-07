@@ -756,7 +756,7 @@ export default function Main() {
               className="bg-[#7C3AED] text-white px-4 py-2 rounded-lg hover:bg-[#38BDF8] transition cursor-pointer font-semibold w-1/2 mt-2"
               onClick={() => sdk.actions.viewProfile({ fid: 268438 })}
             >
-              Follow dev
+            Developer Profile
             </button>
             {!context?.client.added && (
               <button

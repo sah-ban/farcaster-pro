@@ -691,9 +691,9 @@ export default function Main() {
                       : isTxSuccess
                       ? context?.user?.fid !== fid
                         ? "Gifted!"
-                        : "Purchased!"
+                        : "Subscribed!"
                       : `${
-                          context?.user?.fid !== fid ? "Gift" : "Purchase"
+                          context?.user?.fid !== fid ? "Gift" : "Subscribe"
                         } Pro for 30 days`}
                   </span>
                   <svg
@@ -924,7 +924,7 @@ export default function Main() {
           className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition cursor-pointer font-semibold"
           onClick={() =>
             sdk.actions.openUrl(
-              "https://farcaster.xyz/~/inbox/create/268438?text=GM\nI'm having trouble purchasing Pro, can you please check"
+              "https://farcaster.xyz/~/inbox/create/268438?text=GM\nI'm having trouble subscribing Pro, can you please check"
             )
           }
         >

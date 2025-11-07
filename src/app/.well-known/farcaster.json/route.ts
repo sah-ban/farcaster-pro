@@ -22,17 +22,16 @@ export async function GET() {
       webhookUrl: `${appUrl}/api/webhook`,
       subtitle: "Subscribe to Farcaster Pro",
       description:
-        "Subscribe to Farcaster Pro for exclusive features and support the development of the Farcaster ecosystem.",
+        "Monthly Pro subscription",
       primaryCategory: "utility",
       ogImageUrl: `${appUrl}/og.png`,
       tags: ["farcaster", "pro", "subscription", "30", "days"],
       heroImageUrl: `${appUrl}/og.png`,
       tagline: "Subscribe to Farcaster Pro",
       ogTitle: "Farcaster Pro",
-      ogDescription: "Subscribe to Farcaster Pro for exclusive features.",
+      ogDescription: "Monthly Pro subscription",
       requiredChains: ["eip155:8453"],
       canonicalDomain: "pro.itscashless.com",
-
       baseBuilder: {
         allowedAddresses: ["0x06e5B0fd556e8dF43BC45f8343945Fb12C6C3E90"],
       },

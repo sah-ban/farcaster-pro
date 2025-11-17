@@ -25,7 +25,15 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Farcaster Pro",
     openGraph: {
       title: "Farcaster Pro",
-      description: "A mini app to subscribe to Farcaster Pro",
+      description: "Mini app enabling monthly Farcaster Pro subscription",
+      images: [
+        {
+          url: `${appUrl}/og.png`,
+          width: 1200,
+          height: 630,
+          alt: "vFarcaster Pro",
+        },
+      ],
     },
     other: {
       "fc:frame": JSON.stringify(frame),

@@ -31,7 +31,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: `${appUrl}/og.png`,
           width: 1200,
           height: 630,
-          alt: "vFarcaster Pro",
+          alt: "Farcaster Pro",
         },
       ],
     },

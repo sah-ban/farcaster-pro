@@ -733,13 +733,12 @@ export default function Main() {
               Your Balance: {userBalance.toFixed(2)} USDC on Base - Insufficient
             </p>
           )}
-          <div className="text-white text-center mb-5"></div>
-          {tierInfoError && <SendDC />}
-          {decimalsError && <SendDC />}
-          {priceError && <SendDC />}
+          {tierInfoError && <ErrorMessage />}
+          {decimalsError && <ErrorMessage />}
+          {priceError && <ErrorMessage />}
           <div className="flex gap-3"></div>
           {isTxSuccess && <Confetti />}
-          {error && <SendDC />}
+          {error && <ErrorMessage />}
           <footer className="flex-none fixed bottom-0 left-0 w-full p-4 text-center text-white">
            {!isTxSuccess && <div>
               {" "}
@@ -905,21 +904,18 @@ export default function Main() {
     );
   }
 
-  function SendDC() {
+  function ErrorMessage() {
     return (
-      <div className="flex flex-col items-center mt-4">
-        <p className="text-red-500 mb-2 text-center">
-          There was an error. Please send a DM to the developer.
+      <div className="flex flex-col items-center">
+        <p className="text-red-500 mb-2 text-center font-semibold">
+          There was an error.
+          <br /> Please close and open the miniapp again.
         </p>
         <button
-          className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition cursor-pointer font-semibold"
-          onClick={() =>
-            sdk.actions.openUrl(
-              "https://farcaster.xyz/~/inbox/create/268438?text=GM\nI'm having trouble subscribing Pro, can you please check"
-            )
-          }
+          className="bg-[#7C3AED] text-white px-4 py-2 rounded-lg hover:bg-[#38BDF8] transition cursor-pointer font-semibold w-full mt-2"
+          onClick={() => sdk.actions.close()}
         >
-          Send DM
+          Close Miniapp
         </button>
       </div>
     );

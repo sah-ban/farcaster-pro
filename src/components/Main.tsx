@@ -704,9 +704,13 @@ export default function Main() {
                       ? context?.user?.fid !== fid
                         ? "Gifted!, Cast it!"
                         : "Subscribed!, Cast it!"
-                      : `${
-                          context?.user?.fid !== fid ? "Gift" : "Subscribe"
-                        } Pro for 30 days`}
+                      : profile?.accountLevel
+                      ? context?.user?.fid !== fid
+                        ? "Extend Pro by 30 days (Gift)"
+                        : "Extend Pro by 30 days"
+                      : context?.user?.fid !== fid
+                      ? "Gift Pro for 30 days"
+                      : "Subscribe Pro for 30 days"}
                   </span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -751,12 +755,16 @@ export default function Main() {
           {isTxSuccess && <Confetti />}
           {error && <SendDC />}
           <footer className="flex-none fixed bottom-0 left-0 w-full p-4 text-center text-white">
-           <div> Please use farcaster wallet on Mobile <br /> for better experience.</div>
+            <div>
+              {" "}
+              Please use farcaster wallet on Mobile <br /> for better
+              experience.
+            </div>
             <button
               className="bg-[#7C3AED] text-white px-4 py-2 rounded-lg hover:bg-[#38BDF8] transition cursor-pointer font-semibold w-1/2 mt-2"
               onClick={() => sdk.actions.viewProfile({ fid: 268438 })}
             >
-            Developer Profile
+              Developer Profile
             </button>
             {!context?.client.added && (
               <button

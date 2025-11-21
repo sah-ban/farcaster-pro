@@ -10,7 +10,7 @@ import {
 } from "wagmi";
 import { base } from "viem/chains";
 import { config } from "~/components/providers/WagmiProvider";
-import sdk, { AddMiniApp, type Context } from "@farcaster/miniapp-sdk";
+import sdk, { type Context } from "@farcaster/miniapp-sdk";
 import { formatUnits, encodeFunctionData, parseUnits } from "viem";
 import { useSearchParams } from "next/navigation";
 import { tierRegistryAbi } from "../contracts/tierRegistryAbi.js";
@@ -501,26 +501,12 @@ export default function Main() {
     }
   }
 
-  const [addMiniappResult, setAddMiniappResult] = useState("");
-
-  const addMiniapp = useCallback(async () => {
-    try {
-      const result = await sdk.actions.addMiniApp();
-
-      setAddMiniappResult(
-        result.notificationDetails ? `Miniapp Added` : "rejected by user"
-      );
-    } catch (error) {
-      if (error instanceof AddMiniApp.RejectedByUser) {
-        setAddMiniappResult(`${error.message}`);
-      }
-
-      if (error instanceof AddMiniApp.InvalidDomainManifest) {
-        setAddMiniappResult(`${error.message}`);
-      }
-      setAddMiniappResult(`Error: ${error}`);
+  useEffect(() => {
+    if (context && !context?.client.added && isTxSuccess) {
+      sdk.actions.addMiniApp();
     }
-  }, []);
+  }, [context, context?.client.added, isTxSuccess]);
+
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
 
@@ -766,14 +752,6 @@ export default function Main() {
             >
               Developer Profile
             </button>
-            {!context?.client.added && (
-              <button
-                className="bg-[#7C3AED] text-white px-4 py-2 rounded-lg hover:bg-[#38BDF8] transition cursor-pointer font-semibold w-full mt-2"
-                onClick={addMiniapp}
-              >
-                {addMiniappResult || "Add Miniapp to Farcaster"}
-              </button>
-            )}
           </footer>
         </div>
       )}

@@ -755,11 +755,11 @@ export default function Main() {
           {isTxSuccess && <Confetti />}
           {error && <SendDC />}
           <footer className="flex-none fixed bottom-0 left-0 w-full p-4 text-center text-white">
-            <div>
+           {!isTxSuccess && <div>
               {" "}
               Please use farcaster wallet on Mobile <br /> for better
               experience.
-            </div>
+            </div>} 
             <button
               className="bg-[#7C3AED] text-white px-4 py-2 rounded-lg hover:bg-[#38BDF8] transition cursor-pointer font-semibold w-1/2 mt-2"
               onClick={() => sdk.actions.viewProfile({ fid: 268438 })}
